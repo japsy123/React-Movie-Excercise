@@ -1,11 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-/*
-Use React and the data below to display a list of users alongside their favorite movies.
-
-For detailed instructions, refer to instructions.md.
-*/
 
 const profiles = [
   {
@@ -98,7 +93,19 @@ const movies = {
 function App() {
   return (
     <div className="App">
-      <header />
+      <header>
+        {Object.keys(movies).map(movie => {
+          const movieID = movies[movie].id;
+          return <li>{movies[movie].name}</li>;
+
+          // Display list of movies
+          // Fetch the movie ID
+          // Search for the userID related to the movieID in Profile
+          // If user id exists
+          // use that userID to find username in user
+          // else display "no fav movie"
+        })}
+      </header>
     </div>
   );
 }
