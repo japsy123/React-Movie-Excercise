@@ -94,17 +94,51 @@ function App() {
   return (
     <div className="App">
       <header>
-        {Object.keys(movies).map(movie => {
-          const movieID = movies[movie].id;
-          return <li>{movies[movie].name}</li>;
+        <ol>
+          {Object.keys(movies).map(movie => {
+            const movieID = movies[movie].id;
+            var userList;
+            profiles.filter(profile => {
+              if (profile.favoriteMovieID === movieID.toString()) {
+                userList = getUserName(parseInt(profile.userID));
+                return true;
+              } else {
+                return false;
+              }
+            });
+            console.log(userList);
+            function getUserName(userID) {
+              return Object.keys(users).map(user => {
+                if (users[user].id === userID) {
+                  return users[user].name;
+                }
+              });
+            }
 
-          // Display list of movies
-          // Fetch the movie ID
-          // Search for the userID related to the movieID in Profile
-          // If user id exists
-          // use that userID to find username in user
-          // else display "no fav movie"
-        })}
+            var result;
+            if (userList) {
+              const finalList = userList.filter(user => {
+                return user !== undefined;
+              });
+              console.log(finalList);
+              result = finalList.map(username => {
+                return <span>{username + " likes this movie"} </span>;
+              });
+            } else {
+              result = "No users like this movie";
+            }
+
+            return (
+              <li>
+                {movies[movie].name}
+                {result}
+              </li>
+            );
+            // Iterate over userlist
+            //  If userlist is empty = show no users likes this movie
+            // else - selec
+          })}
+        </ol>
       </header>
     </div>
   );
