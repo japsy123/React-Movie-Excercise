@@ -98,7 +98,13 @@ const movies = {
 function App() {
   return (
     <div className="App">
-      <header />
+      <header>
+        {profiles.map(prof => {
+          const movieName = movies[prof.favoriteMovieID].name;
+
+          return <p> {movieName}</p>;
+        })}
+      </header>
     </div>
   );
 }
