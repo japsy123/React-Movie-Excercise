@@ -121,17 +121,17 @@ function App() {
             });
             console.log("finallist " + finalList);
             result = finalList.map(username => {
-              return <li>{username} </li>;
+              return <li>{username}</li>;
             });
           } else {
-            result = "No users like this movie";
+            result = "No users liked this movie";
           }
 
           return (
             <div>
               <h2>{movies[movie].name}</h2>
-              <p>Liked By:</p>
-              <ul>{result}</ul>
+              <h3>Liked By:</h3>
+              {result}
             </div>
           );
         })}
