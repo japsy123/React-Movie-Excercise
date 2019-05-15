@@ -96,19 +96,20 @@ function App() {
       <header>
         {Object.keys(movies).map(movie => {
           const movieID = movies[movie].id;
-          var userList;
+          var userList = [];
           profiles.filter(profile => {
             if (profile.favoriteMovieID === movieID.toString()) {
-              userList = getUserName(parseInt(profile.userID));
+              getUserName(parseInt(profile.userID));
               return true;
             } else {
               return false;
             }
           });
-          console.log(userList);
+          console.log("userList" + userList);
           function getUserName(userID) {
-            return Object.keys(users).map(user => {
+            return Object.keys(users).filter(user => {
               if (users[user].id === userID) {
+                userList.push(users[user].name);
                 return users[user].name;
               }
             });
@@ -119,7 +120,7 @@ function App() {
             const finalList = userList.filter(user => {
               return user !== undefined;
             });
-            console.log(finalList);
+            console.log("finallist " + finalList);
             result = finalList.map(username => {
               return <li>{username} </li>;
             });
