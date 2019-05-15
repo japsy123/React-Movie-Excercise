@@ -105,7 +105,7 @@ function App() {
               return false;
             }
           });
-          console.log("userList" + userList);
+          // console.log("userList" + userList);
           function getUserName(userID) {
             return Object.keys(users).filter(user => {
               if (users[user].id === userID) {
@@ -114,7 +114,6 @@ function App() {
               }
             });
           }
-
           var result;
           if (userList.length >= 1) {
             const finalList = userList.filter(user => {
@@ -124,7 +123,7 @@ function App() {
             result = finalList.map(username => {
               return <li>{username} </li>;
             });
-          } else if (userList === undefined || userList.length == 0) {
+          } else {
             result = "No users like this movie";
           }
 
