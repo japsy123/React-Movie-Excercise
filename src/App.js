@@ -116,7 +116,7 @@ function App() {
           }
 
           var result;
-          if (userList) {
+          if (userList.length >= 1) {
             const finalList = userList.filter(user => {
               return user !== undefined;
             });
@@ -124,7 +124,7 @@ function App() {
             result = finalList.map(username => {
               return <li>{username} </li>;
             });
-          } else {
+          } else if (userList === undefined || userList.length == 0) {
             result = "No users like this movie";
           }
 
