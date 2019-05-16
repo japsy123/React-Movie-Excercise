@@ -90,14 +90,12 @@ const movies = {
     name: "Get Out"
   }
 };
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Dashboard users={users} movies={movies} profiles={profiles} />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div>
+      <Dashboard users={users} movies={movies} profiles={profiles} />
+    </div>
+  );
 }
 
 export default App;
