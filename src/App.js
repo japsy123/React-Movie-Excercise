@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
+import Dashboard from "./Dashboard";
 import "./App.css";
 
 const profiles = [
@@ -90,54 +90,14 @@ const movies = {
     name: "Get Out"
   }
 };
-function App() {
-  return (
-    <div className="App">
-      <header>
-        {Object.keys(movies).map(movie => {
-          const movieID = movies[movie].id;
-          var userList = [];
-          profiles.filter(profile => {
-            if (profile.favoriteMovieID === movieID.toString()) {
-              getUserName(parseInt(profile.userID));
-              return true;
-            } else {
-              return false;
-            }
-          });
-          // console.log("userList" + userList);
-          function getUserName(userID) {
-            return Object.keys(users).filter(user => {
-              if (users[user].id === userID) {
-                userList.push(users[user].name);
-                return users[user].name;
-              }
-            });
-          }
-          var result;
-          if (userList.length >= 1) {
-            const finalList = userList.filter(user => {
-              return user !== undefined;
-            });
-            console.log("finallist " + finalList);
-            result = finalList.map(username => {
-              return <li>{username}</li>;
-            });
-          } else {
-            result = "No users liked this movie";
-          }
-
-          return (
-            <div>
-              <h2>{movies[movie].name}</h2>
-              <h3>Liked By:</h3>
-              {result}
-            </div>
-          );
-        })}
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Dashboard users={users} movies={movies} profiles={profiles} />
+      </div>
+    );
+  }
 }
 
 export default App;
